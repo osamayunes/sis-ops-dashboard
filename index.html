@@ -1,173 +1,211 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIS-OPS-SOP-001 Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
-        }
-    </style>
-</head>
-<body class="bg-slate-50">
-    <div id="root">
-        <div class="min-h-screen p-4 md:p-8">
-            <!-- Header Section -->
-            <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-8">
-                <div class="bg-[#1e3a8a] p-6 text-white flex justify-between items-center">
-                    <div>
-                        <h1 class="text-2xl font-bold tracking-tight">SIS-OPS-SOP-001</h1>
-                        <p class="text-blue-100 text-sm opacity-90">School Calendar Creation & Management</p>
-                    </div>
-                    <div class="text-right hidden sm:block">
-                        <div class="text-xs uppercase tracking-widest opacity-70 mb-1">Status</div>
-                        <div class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">ACTIVE v1.0</div>
-                    </div>
-                </div>
+import React from 'react';
+import { 
+  Calendar, 
+  UserCheck, 
+  Clock, 
+  CheckCircle2, 
+  UploadCloud, 
+  Users, 
+  ShieldCheck,
+  ChevronRight,
+  Info,
+  ExternalLink
+} from 'lucide-react';
 
-                <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 border-b border-slate-100">
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg text-blue-600">
-                            <i data-lucide="info" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold text-slate-500 uppercase">Vision Alignment</h3>
-                            <p class="text-sm text-slate-700 leading-tight mt-1">Ensuring a holistic Islamic lifestyle through balanced scheduling.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-purple-50 rounded-lg text-purple-600">
-                            <i data-lucide="user-check" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3 className="text-xs font-bold text-slate-500 uppercase">Key Responsibility</h3>
-                            <p class="text-sm text-slate-700 leading-tight mt-1">Operations Dept as Process Owner; Marketing as File Lead.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-amber-50 rounded-lg text-amber-600">
-                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold text-slate-500 uppercase">Control Standard</h3>
-                            <p class="text-sm text-slate-700 leading-tight mt-1">Must adhere to SIS color-coding and digital approval locks.</p>
-                        </div>
-                    </div>
-                </div>
+const App = () => {
+  const phases = [
+    {
+      id: "Phase 1",
+      title: "Initiation & Setup",
+      date: "March",
+      owner: "Marketing",
+      description: "Creation of Master Calendar file and Collaboration Space.",
+      icon: <Calendar className="w-6 h-6" />
+    },
+    {
+      id: "Phase 2",
+      title: "Holiday Input",
+      date: "Week 1, March",
+      owner: "HR",
+      description: "Input of National and Company holidays into the master file.",
+      icon: <Clock className="w-6 h-6" />
+    },
+    {
+      id: "Phase 3",
+      title: "Academic Collaboration",
+      date: "March - April",
+      owner: "SLT / Principals",
+      description: "Input of events, exams, teacher holidays, and bridge days.",
+      icon: <Users className="w-6 h-6" />
+    },
+    {
+      id: "Phase 4",
+      title: "Approval Workflow",
+      date: "April - May",
+      owner: "CEO / Board",
+      description: "Digital multi-level approval (SLT → Principal → Board → CEO).",
+      icon: <ShieldCheck className="w-6 h-6" />
+    },
+    {
+      id: "Phase 5",
+      title: "Publishing",
+      date: "May",
+      owner: "Marketing / IT",
+      description: "Dissemination to Parents, Staff, and Website zones.",
+      icon: <UploadCloud className="w-6 h-6" />
+    }
+  ];
+
+  const pillars = [
+    "Islamic", "Academic", "Cultural", "Psychological", "Social", "Health", "Physical"
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
+      {/* Header Section */}
+      <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-8">
+        <div className="bg-[#1e3a8a] p-6 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight">SIS-OPS-SOP-001</h1>
+            <p className="text-blue-100 text-sm opacity-90">School Calendar Creation & Management</p>
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
+            <a 
+              href="https://docs.google.com/document/d/1F_Syz_-DWSD4xyK8BG4DN9c7U8LqefHQd_qpHKYbnUc/edit?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all w-full sm:w-auto justify-center group"
+            >
+              <span>View Full SOP Version</span>
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+            <div className="text-right hidden sm:block">
+              <div className="text-xs uppercase tracking-widest opacity-70 mb-1">Status</div>
+              <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block shadow-lg shadow-green-900/20">ACTIVE v1.0</div>
             </div>
-
-            <!-- Main Process Timeline -->
-            <div class="max-w-5xl mx-auto mb-12">
-                <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2 px-2">
-                    <i data-lucide="clock" class="w-5 h-5 text-blue-600"></i>
-                    Annual Lifecycle Timeline
-                </h2>
-                
-                <div class="relative">
-                    <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-200 md:hidden"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4" id="phases-container">
-                        <!-- Phases injected by JS -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pillars and Protocol -->
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-slate-900 rounded-xl p-6 text-white overflow-hidden relative">
-                    <i data-lucide="shield-check" class="absolute top-0 right-0 p-8 w-32 h-32 opacity-10 pointer-events-none"></i>
-                    <h3 class="text-lg font-bold mb-4">The 7 Pillars Integration</h3>
-                    <p class="text-sm text-slate-300 mb-6">Our calendar is not merely a schedule; it is a manifestation of our mission to foster balanced Muslim children.</p>
-                    <div class="flex flex-wrap gap-2" id="pillars-container"></div>
-                </div>
-
-                <div class="bg-white rounded-xl p-6 border border-slate-200">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4">Change Protocol Checklist</h3>
-                    <div class="space-y-3" id="checklist-container"></div>
-                </div>
-            </div>
-
-            <div class="max-w-5xl mx-auto mt-12 text-center text-slate-400 text-[10px] uppercase tracking-[0.2em]">
-                Spectrum International School &copy; 2026 | Operations Framework
-            </div>
+          </div>
         </div>
+
+        <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 border-b border-slate-100">
+          <div className="flex items-start gap-3">
+            <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+              <Info className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-slate-500 uppercase">Vision Alignment</h3>
+              <p className="text-sm text-slate-700 leading-tight mt-1">
+                Ensuring a holistic Islamic lifestyle through balanced scheduling.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+              <UserCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-slate-500 uppercase">Key Responsibility</h3>
+              <p className="text-sm text-slate-700 leading-tight mt-1">
+                Operations Dept as Process Owner; Marketing as File Lead.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <div className="p-2 bg-amber-50 rounded-lg text-amber-600">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-slate-500 uppercase">Control Standard</h3>
+              <p className="text-sm text-slate-700 leading-tight mt-1">
+                Must adhere to SIS color-coding and digital approval locks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Process Timeline */}
+      <div className="max-w-5xl mx-auto mb-12">
+        <h2 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2 px-2">
+          <Clock className="w-5 h-5 text-blue-600" />
+          Annual Lifecycle Timeline
+        </h2>
+        
+        <div className="relative">
+          {/* Vertical line for mobile */}
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-200 md:hidden"></div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            {phases.map((phase, idx) => (
+              <div key={idx} className="relative bg-white p-5 rounded-xl border border-slate-200 shadow-sm transition-all hover:border-blue-300 group">
+                <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-3">
+                  <div className="z-10 bg-white p-3 rounded-full border-2 border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors">
+                    {phase.icon}
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">{phase.id}</span>
+                    <h4 className="font-bold text-slate-800 text-sm mt-0.5">{phase.title}</h4>
+                    <p className="text-[11px] text-slate-500 font-medium mt-1 uppercase tracking-tighter">{phase.date}</p>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 mt-4 leading-relaxed line-clamp-3">
+                  {phase.description}
+                </p>
+                <div className="mt-4 pt-3 border-t border-slate-50 flex items-center justify-between">
+                  <span className="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded uppercase">{phase.owner}</span>
+                  <ChevronRight className="w-4 h-4 text-slate-300" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 7 Pillars Integration Block */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-slate-900 rounded-xl p-6 text-white overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+            <ShieldCheck className="w-32 h-32" />
+          </div>
+          <h3 className="text-lg font-bold mb-4">The 7 Pillars Integration</h3>
+          <p className="text-sm text-slate-300 mb-6">
+            Our calendar is not merely a schedule; it is a manifestation of our mission to foster balanced Muslim children.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {pillars.map((pillar, i) => (
+              <span key={i} className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-medium text-blue-300">
+                {pillar} Qualification
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl p-6 border border-slate-200">
+          <h3 className="text-lg font-bold text-slate-800 mb-4">Change Protocol Checklist</h3>
+          <div className="space-y-3">
+            {[
+              "Submission 3-4 weeks in advance via Portal.",
+              "Impact Assessment (Prayer shifts, teaching hours).",
+              "Authorized by Board or HR only.",
+              "Level 1: School Principal Review.",
+              "Level 2: CEO Final Approval."
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 text-sm text-slate-600">
+                <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center border border-green-200 flex-shrink-0">
+                  <CheckCircle2 className="w-3 h-3 text-green-600" />
+                </div>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Info */}
+      <div className="max-w-5xl mx-auto mt-12 text-center text-slate-400 text-[10px] uppercase tracking-[0.2em]">
+        Spectrum International School &copy; 2026 | Operations Framework
+      </div>
     </div>
+  );
+};
 
-    <script>
-        const phases = [
-            { id: "Phase 1", title: "Initiation & Setup", date: "March", owner: "Marketing", description: "Creation of Master Calendar file and Collaboration Space.", icon: "calendar" },
-            { id: "Phase 2", title: "Holiday Input", date: "Week 1, March", owner: "HR", description: "Input of National and Company holidays into the master file.", icon: "clock" },
-            { id: "Phase 3", title: "Academic Collaboration", date: "March - April", owner: "SLT / Principals", description: "Input of events, exams, teacher holidays, and bridge days.", icon: "users" },
-            { id: "Phase 4", title: "Approval Workflow", date: "April - May", owner: "CEO / Board", description: "Digital multi-level approval (SLT → Principal → Board → CEO).", icon: "shield-check" },
-            { id: "Phase 5", title: "Publishing", date: "May", owner: "Marketing / IT", description: "Dissemination to Parents, Staff, and Website zones.", icon: "upload-cloud" }
-        ];
-
-        const pillars = ["Islamic", "Academic", "Cultural", "Psychological", "Social", "Health", "Physical"];
-        const checklist = [
-            "Submission 3-4 weeks in advance via Portal.",
-            "Impact Assessment (Prayer shifts, teaching hours).",
-            "Authorized by Board or HR only.",
-            "Level 1: School Principal Review.",
-            "Level 2: CEO Final Approval."
-        ];
-
-        // Render Phases
-        const phaseContainer = document.getElementById('phases-container');
-        phases.forEach(p => {
-            const card = document.createElement('div');
-            card.className = "relative bg-white p-5 rounded-xl border border-slate-200 shadow-sm transition-all hover:border-blue-300 group";
-            card.innerHTML = `
-                <div class="flex md:flex-col items-center md:items-start gap-4 md:gap-3">
-                    <div class="z-10 bg-white p-3 rounded-full border-2 border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors">
-                        <i data-lucide="${p.icon}" class="w-6 h-6"></i>
-                    </div>
-                    <div class="flex-1">
-                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">${p.id}</span>
-                        <h4 class="font-bold text-slate-800 text-sm mt-0.5">${p.title}</h4>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1 uppercase tracking-tighter">${p.date}</p>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-600 mt-4 leading-relaxed line-clamp-3">${p.description}</p>
-                <div class="mt-4 pt-3 border-t border-slate-50 flex items-center justify-between">
-                    <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded uppercase">${p.owner}</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
-                </div>
-            `;
-            phaseContainer.appendChild(card);
-        });
-
-        // Render Pillars
-        const pillarsContainer = document.getElementById('pillars-container');
-        pillars.forEach(p => {
-            const span = document.createElement('span');
-            span.className = "px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-medium text-blue-300";
-            span.textContent = `${p} Qualification`;
-            pillarsContainer.appendChild(span);
-        });
-
-        // Render Checklist
-        const checkContainer = document.getElementById('checklist-container');
-        checklist.forEach(item => {
-            const div = document.createElement('div');
-            div.className = "flex items-center gap-3 text-sm text-slate-600";
-            div.innerHTML = `
-                <div class="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center border border-green-200 flex-shrink-0">
-                    <i data-lucide="check-circle-2" class="w-3 h-3 text-green-600"></i>
-                </div>
-                ${item}
-            `;
-            checkContainer.appendChild(div);
-        });
-
-        // Initialize Icons
-        lucide.createIcons();
-    </script>
-</body>
-</html>
+export default App;
